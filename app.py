@@ -1,11 +1,10 @@
-from flask import Flask
-from flask import render_template
-from datetime import datetime
+from flask import Flask, request, render_template
+
 
 app = Flask(__name__)
 
 if __name__=="__main__":
-        app.run()
+        app.run(debug=True)
 
 @app.route("/")
 def home():
@@ -16,6 +15,16 @@ def cart():
     return render_template("cart.html")
 
 
+@app.route("/search", methods=["GET"])
+def search():
+     query = request.args.get("query")
+     if query:
+          return render_template(
+               "product.html",
+               name=query
+          )
+     else:
+          return render_template("productnotfound.html")
 
 @app.route("/product/")
 
