@@ -8,15 +8,14 @@
 
     <body>
         <div class="navbar">
-             <a href="{{ url_for('home') }}" class="navbar-brand">ShopX</a>
+             <a href="{{ url_for('home') }}" class="navbar-brand">KickzX</a>
 
              <form action="{{ url_for('search') }}" method="get" class="navbar-search">
-                <input type="text" name="query" placeholder="Search...">
+                <input type="text" name="query" placeholder="Search for a shoe, brand, etc." class="navbar-search-field">
                 <button type="submit" id="search-button">Search</button>
             </form>
-             
+             <a href="{{ url_for('login') }}" class="navbar-item">Login</a>
              <a href="{{ url_for('cart') }}" class="navbar-item">Cart</a>
-            
             
         </div>
 

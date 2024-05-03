@@ -1,7 +1,14 @@
 {% extends "layout.html" %}
 {% block title %}
-ShopX: Shop anything
+KickzX: Shop shoes
 {% endblock %}
 {% block content %}
-<p>Home page</p>
+
+<div class="image-container-home">
+<img src="{{ url_for('static', filename='images/1-13.png') }}" alt="Description of image" class="home-image">
+</div>
+<h2>Welcome</h2>
+<p> <div>KickzX is home to my personal collection of vintage and designer shoes that I've have curated over the years.  </div>
+    <div></div>
+    <div>The collection houses various brands and sizes and the shoes come in used and new condition. Please utilize the search field to find your next pair of kickz! </div> </p>
 {% endblock %}
