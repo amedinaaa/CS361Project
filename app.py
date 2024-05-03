@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template
+import json
 
 # from flask_sqlalchemy import SQLAlchemy
 
@@ -41,13 +42,21 @@ def login():
 @app.route("/search", methods=["GET"])
 def search():
      query = request.args.get("query")
-     if query:
-          return render_template(
-               "results.html",
-               name=query
-          )
-     else:
+     if not query:
+        #   return render_template(
+        #        "results.html",
+        #        name=query
+        #   )
           return render_template("productnotfound.html")
+     with open('static/data.json', "r") as file:
+          data = json.load(file)
+          
+     filtered_data = [item for item in data if query.lower() in item['name'].lower()]
+
+     if filtered_data:
+          return render_template("results.html", results=filtered_data, query = query)
+     else:
+          return render_template('productnotfound.html')
 
 @app.route("/results/")
 
